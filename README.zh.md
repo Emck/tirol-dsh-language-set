@@ -12,7 +12,7 @@
 ### 安装
 
 ```bash
-dsh plugin --profile web add @tirol/dsh-language-set   # npm 发布后支持
+dsh plugin --profile web add @tirol/dsh-language-set
 ```
 
 ### 源代码安装

@@ -12,10 +12,17 @@ describe('Config interface', () => {
         expect(config.lang).toBe('zh-CN');
     });
 
-    it('Config type allows null values', () => {
-        const config: ConfigType = Config({ replylang: null, thinkinglang: null });
-        expect(config.replylang).toBeNull();
-        expect(config.thinkinglang).toBeNull();
+    it('Config type allows string values for text fields', () => {
+        const config: ConfigType = Config({
+            replylang: 'en-US',
+            thinkinglang: 'zh-CN',
+            replytext: 'Hello',
+            thinkingtext: 'Think',
+        });
+        expect(config.replylang).toBe('en-US');
+        expect(config.thinkinglang).toBe('zh-CN');
+        expect(config.replytext).toBe('Hello');
+        expect(config.thinkingtext).toBe('Think');
     });
 });
 
@@ -27,28 +34,42 @@ describe('Config defaults', () => {
     it('all defaults', () => {
         const config: ConfigType = Config({});
         expect(config).toMatchObject({ lang: 'en-US', command: false, verbose: false });
-        expect(config.replylang).toBeUndefined();
-        expect(config.thinkinglang).toBeUndefined();
+        expect(config.replylang).toBe('');
+        expect(config.thinkinglang).toBe('');
+        expect(config.replytext).toBe('');
+        expect(config.thinkingtext).toBe('');
     });
 
-    it('explicit null values are preserved', () => {
+    it('explicit string values are preserved', () => {
         const config: ConfigType = Config({
-            replylang: null,
-            thinkinglang: null,
-            replytext: null,
-            thinkingtext: null,
+            replylang: 'en-US',
+            thinkinglang: 'zh-CN',
+            replytext: 'Hello',
+            thinkingtext: 'Think',
         });
-        expect(config).toMatchObject({ lang: 'en-US', command: false, verbose: false });
-        expect(config.replylang).toBeNull();
-        expect(config.thinkinglang).toBeNull();
-        expect(config.replytext).toBeNull();
-        expect(config.thinkingtext).toBeNull();
+        expect(config.replylang).toBe('en-US');
+        expect(config.thinkinglang).toBe('zh-CN');
+        expect(config.replytext).toBe('Hello');
+        expect(config.thinkingtext).toBe('Think');
     });
 
     it('explicit false values are preserved', () => {
         const config: ConfigType = Config({ command: false, verbose: false });
         expect(config.command).toBe(false);
         expect(config.verbose).toBe(false);
+    });
+
+    it('empty string values are preserved', () => {
+        const config: ConfigType = Config({
+            replylang: '',
+            thinkinglang: '',
+            replytext: '',
+            thinkingtext: '',
+        });
+        expect(config.replylang).toBe('');
+        expect(config.thinkinglang).toBe('');
+        expect(config.replytext).toBe('');
+        expect(config.thinkingtext).toBe('');
     });
 });
 
@@ -62,7 +83,7 @@ describe('Config custom values', () => {
             lang: 'zh-CN',
             replylang: 'it-IT',
             thinkinglang: 'ko-KR',
-            replytext: 'Please respond in Japanese.',
+            replytext: 'Please respond in English.',
             thinkingtext: 'Think in Korean.',
             command: true,
             verbose: true,
@@ -71,29 +92,30 @@ describe('Config custom values', () => {
             lang: 'zh-CN',
             replylang: 'it-IT',
             thinkinglang: 'ko-KR',
-            replytext: 'Please respond in Japanese.',
+            replytext: 'Please respond in English.',
             thinkingtext: 'Think in Korean.',
             command: true,
             verbose: true,
         });
     });
 
-    it('accepts null replylang/thinkinglang for lang fallback', () => {
-        const config: ConfigType = Config({ lang: 'zh-CN', replylang: null, thinkinglang: null });
-        expect(config.replylang).toBeNull();
-        expect(config.thinkinglang).toBeNull();
+    it('accepts empty string for text fields', () => {
+        expect(Config({ replylang: '' }).replylang).toBe('');
+        expect(Config({ thinkinglang: '' }).thinkinglang).toBe('');
+        expect(Config({ replytext: '' }).replytext).toBe('');
+        expect(Config({ thinkingtext: '' }).thinkingtext).toBe('');
     });
 
     it('undefined values are included in result', () => {
         const config: ConfigType = Config({ replylang: undefined, thinkinglang: undefined });
         expect('replylang' in config).toBe(true);
-        expect(config.replylang).toBeUndefined();
+        expect(config.replylang).toBe('');
     });
 
-    it('omitted values are not in result', () => {
+    it('omitted values are included in result', () => {
         const config: ConfigType = Config({});
-        expect('replylang' in config).toBe(false);
-        expect('thinkinglang' in config).toBe(false);
+        expect('replylang' in config).toBe(true);
+        expect(config.replylang).toBe('');
     });
 
     it('accepts various language codes', () => {
@@ -102,9 +124,12 @@ describe('Config custom values', () => {
         }
     });
 
-    it('accepts empty string for text fields', () => {
-        expect(Config({ replytext: '' }).replytext).toBe('');
-        expect(Config({ thinkingtext: '' }).thinkingtext).toBe('');
+    it('default text fields are empty strings', () => {
+        const config: ConfigType = Config({});
+        expect(config.replylang).toBe('');
+        expect(config.thinkinglang).toBe('');
+        expect(config.replytext).toBe('');
+        expect(config.thinkingtext).toBe('');
     });
 });
 
@@ -140,8 +165,8 @@ describe('merge', () => {
         expect(merged.thinkinglang).toBe('ko-KR');
     });
 
-    it('merge with null values preserves null', () => {
-        expect(Config.merge(Config({ lang: 'en-US' }), { replylang: null }).replylang).toBeNull();
+    it('merge with empty string values preserves empty string', () => {
+        expect(Config.merge(Config({ lang: 'en-US' }), { replylang: '' }).replylang).toBe('');
     });
 
     it('merge with undefined values', () => {

@@ -5,10 +5,10 @@ import Schema from '@deepseek-ai/schemastery';
  */
 export interface Config {
     lang: string; // global language
-    replylang: string | null; // reply language
-    replytext: string | null; // reply text
-    thinkinglang: string | null; // thinking language
-    thinkingtext: string | null; // thinking text
+    replylang: string; // reply language
+    replytext: string; // reply text
+    thinkinglang: string; // thinking language
+    thinkingtext: string; // thinking text
     command: boolean; // enable command
     verbose: boolean; // verbose mode
 }
@@ -16,19 +16,19 @@ export interface Config {
 /**
  * @description: language config schema
  * @param lang - global language, default is 'en-US'
- * @param replylang - reply language, default is null
- * @param replytext - reply text, default is null
- * @param thinkinglang - thinking language, default is null
- * @param thinkingtext - thinking text, default is null
+ * @param replylang - reply language, default is ''
+ * @param replytext - reply text, default is ''
+ * @param thinkinglang - thinking language, default is ''
+ * @param thinkingtext - thinking text, default is ''
  * @param command - enable command, default is false
  * @param verbose - verbose mode, default is false
  */
 export const Config = Schema.object({
     lang: Schema.string().default('en-US'),
-    replylang: Schema.string().default(null),
-    replytext: Schema.string().default(null),
-    thinkinglang: Schema.string().default(null),
-    thinkingtext: Schema.string().default(null),
+    replylang: Schema.string().default(''),
+    replytext: Schema.string().default(''),
+    thinkinglang: Schema.string().default(''),
+    thinkingtext: Schema.string().default(''),
     command: Schema.boolean().default(false),
     verbose: Schema.boolean().default(false),
 });

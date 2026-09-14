@@ -12,10 +12,10 @@ A [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (`dsh`) pl
 ### Install
 
 ```bash
-dsh plugin --profile web add @tirol/dsh-language-set   # npm after release
+dsh plugin --profile web add @tirol/dsh-language-set
 ```
 
-### Source Code Install
+### Install from Source Code
 
 ```bash
 git clone https://github.com/Emck/tirol-dsh-language-set.git
