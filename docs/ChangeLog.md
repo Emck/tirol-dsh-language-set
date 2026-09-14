@@ -4,15 +4,20 @@
 
 ## [0.1.2] — 2026-09-14
 
+### ✨ Features
+
+- **npm 发布支持** — 添加 `publishConfig.access: public` 配置，支持 npmjs.com 发布
+- **npm 元数据** — 添加 `repository`、`homepage`、`bugs` 字段，完善 npm 包信息
+
 ### 📝 Documentation
 
 - **综合文档** — 新增 docs/ 目录下完整开发文档（API、Architecture、Configuration、Development、Release）
+- **ChangeLog** — 新增版本变更日志文档
 
 ### 🔧 Chores
 
 - **版本升级** — package.json 版本号更新为 `0.1.2`
-- **npm 发布配置** — 添加 `repository`、`homepage`、`bugs` 字段
-- **发布权限** — 添加 `publishConfig.access: public` 配置
+- **测试迁移** — 将测试从 `plugin.spec.ts` 迁移至 `index.spec.ts`
 
 ---
 
