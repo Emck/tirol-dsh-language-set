@@ -1,0 +1,11 @@
+node_modules/
+.vscode/
+lib/
+dist/
+*.tgz
+.tmp/
+.DS_Store
+docs/
+
+# dev
+cordis.dev.yml

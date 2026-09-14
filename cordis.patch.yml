@@ -1,0 +1,5 @@
+- insert:
+    - id: dsh-language-set
+      name: "@tirol/dsh-language-set"
+      config:
+        lang: "zh-CN"
