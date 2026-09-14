@@ -1,6 +1,6 @@
 # Configuration Guide
 
-> `@tirol/dsh-language-set` v0.1.2 — 配置指南
+> `@tirol/dsh-language-set` v0.1.3 — 配置指南
 
 ## Config Schema
 
@@ -11,10 +11,10 @@
 | 字段 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `lang` | `string` | `'en-US'` | 全局默认语言 |
-| `replylang` | `string \| null` | `null` | 回复语言，`null` 时回退到 `lang` |
-| `replytext` | `string \| null` | `null` | 回复提示文本，`null` 时使用默认模板 `By default, reply to users in {language}.` |
-| `thinkinglang` | `string \| null` | `null` | 思维语言，`null` 时回退到 `lang` |
-| `thinkingtext` | `string \| null` | `null` | 思维提示文本，`null` 时使用默认模板 `By default, think to users in {language}.` |
+| `replylang` | `string` | `''` | 回复语言，`''` 时回退到 `lang` |
+| `replytext` | `string` | `''` | 回复提示文本，`''` 时使用默认模板 `By default, reply to users in {language}.` |
+| `thinkinglang` | `string` | `''` | 思维语言，`''` 时回退到 `lang` |
+| `thinkingtext` | `string` | `''` | 思维提示文本，`''` 时使用默认模板 `By default, think to users in {language}.` |
 | `command` | `boolean` | `false` | 是否启用 `language` 命令 |
 | `verbose` | `boolean` | `false` | 是否启用详细日志模式 |
 
@@ -22,7 +22,7 @@
 
 #### `lang` — 全局默认语言
 
-所有语言配置的兜底值。当 `replylang` 和 `thinkinglang` 为 `null` 时，使用此值。
+所有语言配置的兜底值。当 `replylang` 和 `thinkinglang` 为 `''` 时，使用此值。
 
 **示例：**
 ```ts
@@ -32,13 +32,13 @@ Config({ lang: 'zh-CN' });
 
 #### `replylang` — 回复语言
 
-控制 AI 回复用户时使用的语言。默认为 `null`，表示回退到 `lang`。
+控制 AI 回复用户时使用的语言。默认为 `''`，表示回退到 `lang`。
 
 **示例：**
 ```ts
 // 使用全局默认语言
 Config({ lang: 'zh-CN' });
-// → replylang 未定义，回退到 lang = 'zh-CN'
+// → replylang 为空字符串，回退到 lang = 'zh-CN'
 
 // 显式指定回复语言
 Config({ lang: 'en-US', replylang: 'zh-CN' });
@@ -47,7 +47,7 @@ Config({ lang: 'en-US', replylang: 'zh-CN' });
 
 #### `thinkinglang` — 思维语言
 
-控制 AI 内部思考时使用的语言。默认为 `null`，表示回退到 `lang`。
+控制 AI 内部思考时使用的语言。默认为 `''`，表示回退到 `lang`。
 
 **示例：**
 ```ts
@@ -57,7 +57,7 @@ Config({ lang: 'en-US', thinkinglang: 'zh-CN' });
 
 #### `replytext` — 回复提示文本
 
-自定义回复语言的提示文本。默认为 `null`，使用默认模板：
+自定义回复语言的提示文本。默认为 `''`，使用默认模板：
 
 ```
 By default, reply to users in {language}.
@@ -98,7 +98,7 @@ const merged = Config.merge(
 
 **合并规则：**
 - 基于 `Object.assign` 实现，后传入的配置优先覆盖前面的值
-- `null` 值会被保留（不会回退到默认值）
+- `''` 空字符串值会被保留（不会回退到默认值）
 - `undefined` 值会被忽略（不覆盖已有值）
 
 ## 配置使用示例
@@ -119,7 +119,7 @@ await apply(ctx, { lang: 'zh-CN' });
 await apply(ctx, {
     lang: 'en-US',           // 兜底语言：英文
     replylang: 'zh-CN',      // 回复语言：中文
-    thinkinglang: null,      // 思维语言：回退到 lang = 英文
+    thinkinglang: '',      // 思维语言：回退到 lang = 英文
 });
 ```
 

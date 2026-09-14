@@ -2,6 +2,18 @@
 
 > `@tirol/dsh-language-set` — 版本变更日志
 
+## [0.1.3] — TBD
+
+### 🔄 Refactors
+
+- **配置类型变更** — `replylang`、`replytext`、`thinkinglang`、`thinkingtext` 类型从 `string | null` 改为 `string`，默认值从 `null` 改为 `''`（空字符串）
+
+### 📝 Documentation
+
+- **文档同步** — 更新所有文档中的配置字段类型和默认值说明
+
+---
+
 ## [0.1.2] — 2026-09-14
 
 ### ✨ Features
@@ -59,6 +71,7 @@
 
 ---
 
+[0.1.3]: https://github.com/Emck/tirol-dsh-language-set/releases/tag/v0.1.3
 [0.1.2]: https://github.com/Emck/tirol-dsh-language-set/releases/tag/v0.1.2
 [0.1.1]: https://github.com/Emck/tirol-dsh-language-set/compare/v0.1.1...v0.1.2
 [0.1.0]: https://github.com/Emck/tirol-dsh-language-set/releases/tag/v0.1.0

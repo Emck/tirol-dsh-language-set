@@ -1,6 +1,6 @@
 {
     "name": "@tirol/dsh-language-set",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "DeepSeek Harness plugin: Set AI Language via system prompt injection",
     "license": "MIT",
     "author": "Emck",

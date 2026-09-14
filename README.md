@@ -45,10 +45,10 @@ Modify `profiles/web/cordis.patch.yml` configuration to change the language (cur
 | Field | Type | Default | Description |
 |-------|------|---------|------------|
 | `lang` | `string` | `'en-US'` | Global default language |
-| `replylang` | `string \| null` | `null` | Reply language, falls back to `lang` when `null` |
-| `thinkinglang` | `string \| null` | `null` | Thinking language, falls back to `lang` when `null` |
-| `replytext` | `string \| null` | `null` | Reply prompt text, customizes the default template |
-| `thinkingtext` | `string \| null` | `null` | Thinking prompt text, customizes the default template |
+| `replylang` | `string` | `''` | Reply language, falls back to `lang` when `''` |
+| `thinkinglang` | `string` | `''` | Thinking language, falls back to `lang` when `''` |
+| `replytext` | `string` | `''` | Reply prompt text, customizes the default template |
+| `thinkingtext` | `string` | `''` | Thinking prompt text, customizes the default template |
 | `command` | `boolean` | `false` | Whether to enable the `language` command |
 | `verbose` | `boolean` | `false` | Whether to enable verbose logging mode |
 

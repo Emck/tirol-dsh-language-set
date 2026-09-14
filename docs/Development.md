@@ -1,6 +1,6 @@
 # Development Guide
 
-> `@tirol/dsh-language-set` v0.1.2 — 开发指南
+> `@tirol/dsh-language-set` v0.1.3 — 开发指南
 
 ## 环境要求
 
@@ -133,7 +133,7 @@ export default defineConfig({
 | 模块 | 测试文件 | 测试数 | 覆盖内容 |
 |------|----------|--------|----------|
 | `src/index.ts` | `tests/index.spec.ts` | 2 | 插件导出验证、re-import 稳定性 |
-| `src/config.ts` | `tests/config.spec.ts` | 21 | Config interface、defaults、custom values、merge |
+| `src/config.ts` | `tests/config.spec.ts` | 22 | Config interface、defaults、custom values、merge |
 
 ### 测试分类
 
@@ -144,7 +144,7 @@ export default defineConfig({
 **配置测试** (`tests/config.spec.ts`)：
 - Config interface — TypeScript 类型兼容性
 - Config defaults — 所有字段默认值验证
-- Config custom values — 自定义值、null/undefined 行为
+- Config custom values — 自定义值、空字符串/undefined 行为
 - Config Merge — 配置合并逻辑
 
 ## Cordis 开发环境

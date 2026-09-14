@@ -46,10 +46,10 @@ dsh plugin --profile web add .
 | 字段 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `lang` | `string` | `'en-US'` | 全局默认语言 |
-| `replylang` | `string \| null` | `null` | 回复语言，`null` 时回退到 `lang` |
-| `thinkinglang` | `string \| null` | `null` | 思维语言，`null` 时回退到 `lang` |
-| `replytext` | `string \| null` | `null` | 回复提示文本，自定义覆盖默认模板 |
-| `thinkingtext` | `string \| null` | `null` | 思维提示文本，自定义覆盖默认模板 |
+| `replylang` | `string` | `''` | 回复语言，`''` 时回退到 `lang` |
+| `thinkinglang` | `string` | `''` | 思维语言，`''` 时回退到 `lang` |
+| `replytext` | `string` | `''` | 回复提示文本，自定义覆盖默认模板 |
+| `thinkingtext` | `string` | `''` | 思维提示文本，自定义覆盖默认模板 |
 | `command` | `boolean` | `false` | 是否启用 `language` 命令 |
 | `verbose` | `boolean` | `false` | 是否启用详细日志模式 |
 

@@ -1,6 +1,6 @@
 # Architecture
 
-> `@tirol/dsh-language-set` v0.1.2 — 架构设计文档
+> `@tirol/dsh-language-set` v0.1.3 — 架构设计文档
 
 ## 项目定位
 

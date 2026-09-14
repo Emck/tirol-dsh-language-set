@@ -1,6 +1,6 @@
 # Release Guide
 
-> `@tirol/dsh-language-set` v0.1.2 — 发布指南
+> `@tirol/dsh-language-set` v0.1.3 — 发布指南
 
 ## 发布前检查清单
 
@@ -13,7 +13,7 @@ pnpm run check
 
 依次执行：
 1. **类型检查** — `tsc --noEmit` 零错误
-2. **单元测试** — 23/23 tests passed
+2. **单元测试** — 24/24 tests passed
 3. **构建** — `tsdown` 成功输出 `lib/index.mjs` + `lib/index.d.mts`
 
 ### Tarball 验证
@@ -50,7 +50,7 @@ npm ls --depth=0
 
 ```json
 {
-    "version": "0.1.2"
+    "version": "0.1.3"
 }
 ```
 
@@ -66,8 +66,8 @@ pnpm run check
 
 ```bash
 git add package.json
-git commit -m "chore: bump version to 0.1.2"
-git tag v0.1.2
+git commit -m "chore: bump version to 0.1.3"
+git tag v0.1.3
 git push origin main --tags
 ```
 
@@ -88,7 +88,7 @@ pnpm publish
 
 ```bash
 # 在测试项目中安装
-pnpm add @tirol/dsh-language-set@0.1.2
+pnpm add @tirol/dsh-language-set@0.1.3
 
 # 验证导入
 node -e "import('@tirol/dsh-language-set').then(m => console.log(m.name, m.inject))"
@@ -100,12 +100,12 @@ node -e "import('@tirol/dsh-language-set').then(m => console.log(m.name, m.injec
 
 | 版本格式 | 含义 | 示例 |
 |----------|------|------|
-| `0.x.x` | 开发阶段，API 可能变动 | `0.1.2` |
+| `0.x.x` | 开发阶段，API 可能变动 | `0.1.3` |
 | `x.0.0` | 主版本更新，可能有 breaking changes | `1.0.0` |
 | `x.x.0` | 功能更新，向后兼容 | `0.2.0` |
 | `x.x.x` | Bug 修复，向后兼容 | `0.1.3` |
 
-当前版本 `0.1.2` 处于开发阶段，API 可能变动。
+当前版本 `0.1.3` 处于开发阶段，API 可能变动。
 
 ## 发布后操作
 
@@ -130,10 +130,10 @@ node -e "import('@tirol/dsh-language-set').then(m => console.log(m.name, m.injec
 
 ```bash
 # 方法一：npm unpublish（仅限 24 小时内）
-npm unpublish @tirol/dsh-language-set@0.1.2
+npm unpublish @tirol/dsh-language-set@0.1.3
 
 # 方法二：发布修复版本
-# 修改 package.json version 为 0.1.3
+# 修改 package.json version 为 0.1.4
 # 重新执行发布流程
 ```
 
@@ -182,7 +182,7 @@ sudo chown -R $(whoami) ~/.npm
 ## 发布检查清单
 
 - [ ] `pnpm run typecheck` — 零错误
-- [ ] `pnpm run test` — 23/23 tests passed
+- [ ] `pnpm run test` — 24/24 tests passed
 - [ ] `pnpm run build` — 构建成功
 - [ ] `pnpm pack --dry-run` — 文件清单正确
 - [ ] `package.json` version 已更新

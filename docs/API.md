@@ -1,6 +1,6 @@
 # API Reference
 
-> `@tirol/dsh-language-set` v0.1.2 — 完整的 API 文档
+> `@tirol/dsh-language-set` v0.1.3 — 完整的 API 文档
 
 ## 模块导出
 
@@ -57,10 +57,10 @@ export function apply(ctx: Context, config?: Config): Promise<void>
 ```ts
 interface Config {
     lang: string;              // 全局默认语言，默认 'en-US'
-    replylang: string | null;  // 回复语言，默认 null（回退到 lang）
-    replytext: string | null;  // 回复提示文本，默认 null
-    thinkinglang: string | null; // 思维语言，默认 null（回退到 lang）
-    thinkingtext: string | null; // 思维提示文本，默认 null
+    replylang: string;         // 回复语言，默认 ''（回退到 lang）
+    replytext: string;         // 回复提示文本，默认 ''
+    thinkinglang: string;      // 思维语言，默认 ''（回退到 lang）
+    thinkingtext: string;      // 思维提示文本，默认 ''
     command: boolean;          // 启用 language 命令，默认 false
     verbose: boolean;          // 详细日志模式，默认 false
 }
@@ -81,8 +81,8 @@ import { Config } from '@tirol/dsh-language-set/config';
 
 const config = Config({
     lang: 'zh-CN',
-    replylang: null,
-    thinkinglang: null,
+    replylang: '',
+    thinkinglang: '',
 });
 ```
 
