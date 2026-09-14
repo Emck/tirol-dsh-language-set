@@ -1,6 +1,6 @@
 {
     "name": "@tirol/dsh-language-set",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "DeepSeek Harness plugin: Set AI Language via system prompt injection",
     "license": "MIT",
     "author": "Emck",
@@ -30,6 +30,9 @@
         "README.zh.md",
         "LICENSE"
     ],
+    "repository": "github:Emck/tirol-dsh-language-set",
+    "homepage": "https://github.com/Emck/tirol-dsh-language-set#readme",
+    "bugs": "https://github.com/Emck/tirol-dsh-language-set/issues",
     "dsh": {
         "bundle": {
             "patch": "./cordis.patch.yml"
@@ -54,5 +57,8 @@
         "tsdown": "0.22.14",
         "typescript": "6.0.3",
         "vitest": "^4.1.10"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }
